@@ -8,4 +8,5 @@ const searchRouter = express.Router();
 searchRouter.get("/search", search);
 searchRouter.get("/details/:id", details);
 
+
 export default searchRouter;

@@ -9,13 +9,16 @@ import searchKayModels from "../databsase/models/searchKayModels.js";
  */
 export const search = async (req, res) => {
   try {
-    const { search = "" } = req.query;
     const { providerId } = req;
+    const { search = "" } = req.query;
+
     const bookList = await axios.get(`${process.env.BOOK_SEARCH_URL}${search}`);
     const bookLists = stringify(bookList.data.items);
 
     const user = await searchKayModels.findOne({ providerId });
+    console.log("userProviderId",providerId)
 
+    console.log("user",user)
     // in search key collection user not found
     if (!user) {
       await searchKayModels.create({

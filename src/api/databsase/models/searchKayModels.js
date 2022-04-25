@@ -4,10 +4,11 @@ const { Schema } = mongoose;
 
 const SearchKayModelSchema = new Schema({
   providerId: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now },
   search: [
     {
-      key: {type:String,required:true},
-      count:{type:Number,required:true,default:0},
+      key: { type: String, required: true },
+      count: { type: Number, required: true, default: 0 },
     },
   ],
 });

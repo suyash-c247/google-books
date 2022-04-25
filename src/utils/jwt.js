@@ -7,5 +7,6 @@ export const encode = async (payload) => {
 };
 
 export const decode = async (token) => {
+  console.log(token)
   return jwt.decode(token, process.env.JWT_SECRET);
 };

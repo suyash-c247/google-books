@@ -14,16 +14,16 @@ export const validateToken = async (req, res, next) => {
     const { headers: { authorization }, } = req;
 
     const token = authorization.split(" ")[1];
-
+  
     const { providerId } = await decode(token);
-    const userDetails = await userModel.findOne({providerId : providerId})
+    const userDetails = await userModel.findOne({providerId})
     if (!userDetails) {
       return res.status(404).json({
         message: message.USER_NOT_FOUND
       });
     }
-
-    req.providerId = providerId;
+    console.log("in validate token",userDetails.providerId)
+    req.providerId =userDetails.providerId;
     next();
 
   } catch (error) {

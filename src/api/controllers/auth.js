@@ -27,6 +27,7 @@ const loginAction = async (req, res) => {
         providerType,
       });
 
+      console.log("while create and login",providerId) 
       return res.status(200).json({
         message: message.LOGIN_SUCCESS,
         user: user,
@@ -35,7 +36,8 @@ const loginAction = async (req, res) => {
         })}`,
       });
     }
-
+    console.log("while  login",providerId) 
+ 
     return res.status(200).json({
       message: message.LOGIN_SUCCESS,
       user: userExist,
@@ -43,7 +45,6 @@ const loginAction = async (req, res) => {
         providerId: userExist.providerId,
       })}`,
     });
-    
   } catch (error) {
     return res.status(500).json({
       message: message.ERROR_MESSAGE,
